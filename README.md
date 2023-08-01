@@ -3,77 +3,22 @@ Hands-on Introduction to Linux Commands and Shell Scripting by IBM on Coursera
 
 Finel Project File:
 backup.sh:
-![17-crontab](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/c74aef5d-e2ad-4edf-8ded-6ed0964f3d64)
+![01-Set_Variables](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/d08cccc8-5ff4-4b41-9a5c-3f63666e7422)
+![02-Display_Values](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/49562877-b7b6-44d8-ab9a-a05ad3b3dc7b)
+![03-CurrentTS](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/61ed6460-099b-4599-8c0c-c69a450f40e4)
+![04-Set_Value](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/91e43590-5cef-4c9c-b694-dfd5ec568376)
+![05-Define_Variable](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/3c87310c-e863-4829-bbfd-4cc5f0dd2741)
+![06-Define_Variable](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/2778e1ea-0546-4dd4-b3af-24e0ec69946f)
+![07-Change_Directory](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/b3701252-2513-418d-a3b9-d2337d2b7972)
+![08-YesterdayTS](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/64907312-148b-42d9-93ae-b46b0a5426d7)
+![09-List_AllFilesandDirectoriess](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/befbb581-1b77-4bc8-9144-fc1fb8bc2388)
+![10-IF_Statement](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/204ea99a-4e67-4b62-a4a0-680a1269c763)
+![11-Add_File](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/b983b00b-d2c2-44e9-8a93-5db81fb4cee3)
+![12-Create_Backup](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/b03ff4a9-e4b7-41ac-91d0-929d552f8194)
+![13-Move_Backup](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/da0572e2-90e6-42b1-92bf-93daaa9b6e86)
+![15-executable](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/c108c645-3d86-4a48-a0a5-8e2042b8ecce)
+![16-backup-complete](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/a2953e8f-de51-4b86-b46f-feffb53b4d97)
+![17-crontab](https://github.com/jaydattpatel/Linux-commands-and-Shell-Scripts/assets/124486498/aadbfd38-52e5-4fb3-b644-f87d194e16f7)
 
-#!/bin/bash
 
-# This checks if the number of arguments is correct
-# If the number of arguments is incorrect ( $# != 2) print error message and exit
-if [[ $# != 2 ]]
-then
-  echo "backup.sh target_directory_name destination_directory_name"
-  exit
-fi
-
-# This checks if argument 1 and argument 2 are valid directory paths
-if [[ ! -d $1 ]] || [[ ! -d $2 ]]
-then
-  echo "Invalid directory path provided"
-  exit
-fi
-
-# [TASK 1]
-targetDirectory=$1
-destinationDirectory=$2
-
-# [TASK 2]
-echo "targetDirectory is $1"
-echo "destinationDirectory is $2"
-
-# [TASK 3]
-currentTS=$(date +%s)
-
-# [TASK 4]
-backupFileName="backup-$currentTS.tar.gz"
-
-# We're going to:
-  # 1: Go into the target directory
-  # 2: Create the backup file
-  # 3: Move the backup file to the destination directory
-
-# To make things easier, we will define some useful variables...
-
-# [TASK 5]
-origAbsPath=$(pwd)
-
-# [TASK 6]
-cd $destinationDirectory
-destAbsPath=$destinationDirectory
-
-# [TASK 7]
-cd $origAbsPath
-cd $targetDirectory
-
-# [TASK 8]
-yesterdayTS=$(($currentTS - 24 * 60 * 60))
-
-declare -a toBackup
-
-for file in $(ls) # [TASK 9]
-do
-  # [TASK 10]
-  if ((`date -r $file +%s` > $yesterdayTS))
-  then
-    # [TASK 11]
-    toBackup+=($file)
-  fi
-done
-
-# [TASK 12]
-tar -czvf $backupFileName ${toBackup[@]}
-
-# [TASK 13]
-mv $backupFileName $destAbsPath
-
-# Congratulations! You completed the final project for this course!
 
