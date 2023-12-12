@@ -1,0 +1,10 @@
+Lion
+Dog
+Tiger
+Cat
+Monkey
+Cow
+Lion
+Cat
+Dog
+Dog
