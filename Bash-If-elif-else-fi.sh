@@ -28,10 +28,10 @@ fi
 
 
 ss="B"
-if [ $ss == "A" ]
+if [ $ss=="A" ]
 then
     echo "Apple"
-elif [ $ss == "B" ]
+elif [ $ss=="B" ]
 then
     echo "Ball"
 else

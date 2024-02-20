@@ -37,12 +37,14 @@ echo ${arr[0]}
 echo ${arr[2]}
 echo ${arr[@]}
 
+# Iterate object directly
 echo "for loop 1:"
 for item in ${arr[@]}
 do
     echo $item
 done
 
+# Iterate object using index
 echo "for loop 2:"
 for i in ${!arr[@]}; do
   echo "element $i is ${arr[$i]}"

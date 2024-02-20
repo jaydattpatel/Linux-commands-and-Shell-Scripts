@@ -1,4 +1,5 @@
 # Author : Jaydatt Patel
+
 # get bash path location
 which bash
 bashPath=`which bash`
