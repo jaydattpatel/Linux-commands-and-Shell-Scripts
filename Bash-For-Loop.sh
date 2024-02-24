@@ -9,6 +9,16 @@ do
     fi
 done
 
+# string iterate
+string="Hello, World!"
+length=${#string}
+for ((i = 0; i < length; i++)) 
+do
+    char="${string:i:1}"
+    echo "Character at position $i: $char"
+done
+
+
 # for loop for array 
 arr=(1 2 "three" "four")
 

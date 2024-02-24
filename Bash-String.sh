@@ -1,5 +1,27 @@
 # Author : Jaydatt Patel
 
+string="Hello, World!"
+length=${#string}
+for ((i = 0; i < length; i++)) 
+do
+    char="${string:i:1}"
+    echo "Character at position $i: $char"
+done
+
+# rev for reverse string
+echo "Hello, world!" | rev;
+
+ss="B"
+if [ $ss=="A" ]
+then
+    echo "Apple"
+elif [ $ss=="B" ]
+then
+    echo "Ball"
+else
+    echo "Invalid"
+fi
+
 # tr [Optional] [set1] [set2] to translate or replace character
 # -c : replace other characters which are not in set1
 # -cd : get only selected characters
